@@ -201,7 +201,7 @@ body {
 /* --- SEÇÃO SOBRE --- */
 .about {
     padding: 80px 0;
-    background-color: #FFF5F0; /* Fundo rosado claro da imagem */
+    background-color: #FFF5F0; 
     overflow: hidden;
 }
 
@@ -838,4 +838,6 @@ details[open] .faq-content {
         padding: 12px;
         font-size: 0.85rem;
     }
+    
 }
+
