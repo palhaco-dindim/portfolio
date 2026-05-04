@@ -213,12 +213,69 @@
         </div>
     </div>
 </section>
+
+
 <!-- Janela Modal para expandir a foto -->
 <div id="imageModal" class="modal">
     <span class="close-modal">&times;</span>
     <img class="modal-content" id="imgExpanded">
     <div id="caption"></div>
 </div>
+
+
+<!---ultima sessão - footer-->
+<footer class="main-footer">
+    <!-- Botão Voltar ao Topo -->
+    <a href="#" class="back-to-top">Voltar ao topo</a>
+
+    <div class="container footer-grid">
+        <!-- Coluna 1: Explorar -->
+        <div class="footer-col">
+            <h3>EXPLORAR</h3>
+            <ul class="footer-links">
+                <li><a href="#">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="galeria.html">Galeria e eventos</a></li>
+                <li><a href="#faq">Dúvidas frequentes</a></li>
+            </ul>
+        </div>
+
+        <!-- Coluna 2: Contato -->
+        <div class="footer-col">
+            <h3>CONTATO</h3>
+            <ul class="footer-links">
+                <li><a href="https://wa.me/seunumero" target="_blank">Fala comigo</a></li>
+                <li><a href="javascript:void(0)" onclick="copyEmail()" id="email-link">Copiar e-mail</a></li>
+            </ul>
+        </div>
+
+        <!-- Coluna 3: Conectar-se -->
+        <div class="footer-col">
+            <h3>CONECTE-SE</h3>
+            <ul class="footer-links">
+                <li><a href="https://instagram.com/palhacodindim" target="_blank">Instagram</a></li>
+                <li><a href="https://wa.me/seunumero" target="_blank">WhatsApp</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Parte de baixo: Direitos Autorais -->
+    <div class="footer-bottom">
+        <p>Palhaço Dindim - Todos os direitos reservados &copy; 2024</p>
+    </div>
+</footer>
+
+<!-- Script simples para copiar o e-mail -->
+<script>
+function copyEmail() {
+    const email = "seuemail@exemplo.com"; // Troque pelo seu e-mail real
+    navigator.clipboard.writeText(email);
+    const link = document.getElementById('email-link');
+    link.innerText = "E-mail copiado!";
+    setTimeout(() => { link.innerText = "Copiar e-mail"; }, 2000);
+}
+</script>
 
 <script>
     // Seleciona o Modal e os elementos internos

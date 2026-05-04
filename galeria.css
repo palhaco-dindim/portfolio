@@ -505,6 +505,126 @@ body {
     }
 }
 
+/* --- RODAPÉ (FOOTER) --- */
+.main-footer {
+    background-color: var(--azul-escuro); /* Azul escuro para quebrar o excesso de laranja */
+    padding: 80px 0 30px 0;
+    color: #ffffff;
+    position: relative;
+    border-top: 6px solid var(--laranja-principal); /* Detalhe fino laranja no topo */
+}
+
+/* Botão Voltar ao Topo */
+.back-to-top {
+    position: absolute;
+    top: -25px;
+    right: 50px;
+    background-color: #E63946; /* Vermelho para destaque */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+
+.back-to-top:hover {
+    background-color: var(--laranja-principal);
+    transform: translateY(-5px);
+}
+
+/* Grid de 3 Colunas */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-col {
+    position: relative;
+    text-align: center;
+}
+
+/* Linhas divisórias entre as colunas (visíveis apenas em desktop) */
+.footer-col:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -20px;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Títulos das Colunas (H3) */
+.footer-col h3 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+/* Links do Rodapé */
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--laranja-principal);
+    padding-left: 8px; /* Efeito de deslize suave */
+}
+
+/* Parte Inferior (Direitos Autorais) */
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.footer-bottom p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* --- RESPONSIVIDADE DO FOOTER --- */
+@media (max-width: 992px) {
+    .footer-grid {
+        grid-template-columns: 1fr; /* Transforma em uma única coluna no celular/tablet */
+        gap: 50px;
+    }
+
+    .footer-col::after {
+        display: none; /* Remove as linhas divisórias verticais */
+    }
+
+    .back-to-top {
+        right: 50%;
+        transform: translateX(50%); /* Centraliza o botão no mobile */
+    }
+
+    .back-to-top:hover {
+        transform: translateX(50%) translateY(-5px);
+    }
+}
+
 @keyframes zoom {
     from {transform: scale(0)} 
     to {transform: scale(1)}
