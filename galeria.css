@@ -1,3 +1,4 @@
+/* --- VARIÁVEIS E RESET --- */
 * {
     margin: 0;
     padding: 0;
@@ -7,6 +8,7 @@
 :root {
     --laranja-principal: #FF6B00;
     --laranja-gradiente: linear-gradient(135deg, #FF8C38 0%, #FF5100 100%);
+    --vermelho-gradiente: linear-gradient(180deg, #FF3D00 0%, #E63946 100%);
     --azul-escuro: #1f65ac;
     --branco: #FFFFFF;
     --fonte-principal: 'Montserrat', sans-serif;
@@ -14,7 +16,7 @@
 
 body {
     font-family: var(--fonte-principal);
-    background-color: #ffffff; /* Fundo levemente rosado para combinar */
+    background-color: #ffffff;
 }
 
 .container {
@@ -23,7 +25,7 @@ body {
     padding: 0 20px;
 }
 
-/* --- NAVBAR --- */
+/* --- NAVBAR (IDÊNTICO AO INDEX) --- */
 .navbar {
     background-color: var(--branco);
     padding: 15px 0;
@@ -60,7 +62,7 @@ body {
     transition: 0.3s;
 }
 
-.nav-links a:hover {
+.nav-links a:hover, .nav-links a.active {
     color: var(--laranja-principal);
 }
 
@@ -71,10 +73,496 @@ body {
     border-radius: 25px;
     text-decoration: none;
     font-weight: bold;
-    transition: transform 0.2s;
+    transition: 0.3s;
 }
 
 .btn-whatsapp:hover {
+    background: var(--azul-escuro);
     transform: scale(1.05);
-     background: var(--azul-escuro);
+}
+
+/* --- HERO GALERIA --- */
+.hero-galeria {
+    /* Substitua pela sua imagem de background com os palhaços no teatro */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('imgs/teatro-circo-img.webp') no-repeat center center;
+    background-size: cover;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hero-galeria-wrapper {
+    display: flex;
+    justify-content: flex-end; /* Empurra o card para a direita */
+    width: 100%;
+}
+
+/* O Card Branco */
+.card-galeria-info {
+    background-color: #FFF0ED;
+    padding: 50px 40px;
+    border-radius: 30px 0 0 30px; /* Arredondado só na esquerda */
+    max-width: 450px;
+    position: relative;
+    box-shadow: -10px 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* Avatar sobreposto ao topo do card */
+.avatar-overlap {
+    position: absolute;
+    top: -45px;
+    left: 20px; /* Ajuste para bater com o visual da foto */
+    width: 90px;
+    height: 90px;
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.avatar-overlap img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--laranja-principal);
+}
+
+.card-galeria-info h2 {
+    font-size: 1.6rem;
+    color: #1a1a1a;
+    margin-bottom: 25px;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+/* Botão Veja Mais */
+.btn-veja-mais {
+    display: inline-block;
+    background: var(--laranja-gradiente);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-veja-mais:hover {
+    background: #1f65ac;
+    transform: translateY(-3px);
+}
+
+/* Detalhe colorido na ponta direita do card */
+.side-detail {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 15px;
+    background: var(--vermelho-gradiente);
+}
+
+/* --- SEÇÃO ÚLTIMOS EVENTOS --- */
+.latest-events {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.section-title {
+    color: var(--laranja-principal);
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+}
+
+/* --- ESTILO DO CARD --- */
+.event-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.event-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* O Overlay (Efeito de Hover) */
+.event-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    opacity: 0; /* Invisível por padrão */
+    transition: opacity 0.3s ease;
+}
+
+.event-overlay h3 {
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.event-overlay p {
+    color: #FF8C38;
+    font-weight: bold;
+}
+
+/* Ação do Hover */
+.event-card:hover .event-overlay {
+    opacity: 1; /* Aparece no hover */
+}
+
+.event-card:hover img {
+    transform: scale(1.1); /* Zoom suave na imagem */
+}
+
+/* --- BOTÕES DE NAVEGAÇÃO --- */
+.swiper-button-next, .swiper-button-prev {
+    color: var(--laranja-principal) !important;
+    background: rgba(255, 255, 255, 0.8);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+    font-size: 20px !important;
+    font-weight: bold;
+}
+
+/* --- BOTÃO TODOS OS EVENTOS --- */
+.events-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.btn-all-events {
+    background: var(--laranja-gradiente);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+}
+
+.btn-all-events:hover {
+    transform: translateY(-3px);
+}
+
+.swiper {
+    width: 100%;
+    padding: 20px 0 50px 0; /* Espaço para as setas e sombra */
+}
+
+/* --- SEÇÃO GALERIA MOSAICO --- */
+.gallery-mosaic {
+    background-color: #E63946; /* Vermelho vibrante da imagem */
+    padding: 80px 0;
+    text-align: center;
+}
+
+.gallery-title {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 50px;
+    text-transform: capitalize;
+}
+
+.gallery-grid {
+    display: grid;
+    /* Criamos 3 colunas iguais */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px; /* Espaço entre as fotos */
+}
+
+.grid-item {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a foto preencha o espaço sem deformar */
+    display: block;
+}
+
+/* --- TAMANHOS ESPECÍFICOS --- */
+
+/* Os quadrados */
+.square {
+    aspect-ratio: 1 / 1; /* Força ser um quadrado perfeito */
+}
+
+/* As fotos largas (ocupam as 3 colunas) */
+.wide {
+    grid-column: span 3; 
+    height: 350px; /* Altura fixa para as fotos panorâmicas */
+}
+
+/* Efeito de destaque ao passar o mouse */
+.grid-item:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .gallery-grid {
+        /* No tablet, passamos para 2 colunas */
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .wide {
+        grid-column: span 2;
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        /* No celular, tudo vira uma coluna só */
+        grid-template-columns: 1fr;
+    }
+    
+    .wide, .square {
+        grid-column: span 1;
+        height: auto;
+        aspect-ratio: 16 / 9; /* Formato padrão de foto de celular */
+    }
+}
+/* --- ESTILO DO MODAL (FOTO EXPANDIDA) --- */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 2000; /* Fica em cima de tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Fundo preto transparente */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 80vh;
+    border: 5px solid white;
+    border-radius: 10px;
+    animation: zoom 0.3s; /* Efeito de zoom ao abrir */
+}
+
+/* --- SEÇÃO VÍDEOS --- */
+.videos-section {
+    padding: 80px 0;
+    background-color: #FFF0ED; /* Fundo suave */
+}
+
+.videos-title {
+    color: #E63946;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.videos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* O CARD HORIZONTAL */
+.video-card {
+    background-color: #f9f9f9;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    padding: 25px;
+    gap: 30px;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    /* Borda laranja decorativa à esquerda */
+    border-left: 12px solid #FF5100;
+}
+
+/* Miniatura */
+.video-thumbnail {
+    flex: 0 0 250px; /* Largura fixa para a thumb */
+    height: 150px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Informações do Vídeo */
+.video-info {
+    flex: 1;
+}
+
+.video-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+}
+
+.video-info p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.video-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* Botão Assistir */
+.video-action {
+    flex: 0 0 150px;
+    text-align: right;
+}
+
+.btn-assistir {
+    display: inline-block;
+    background-color: #E63946;
+    color: white;
+    padding: 12px 35px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-assistir:hover {
+    background-color: #FF5100;
+    transform: scale(1.05);
+}
+
+/* --- RESPONSIVIDADE VÍDEOS --- */
+@media (max-width: 992px) {
+    .video-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+        border-left: none;
+        border-top: 12px solid #FF5100; /* Borda no topo no mobile */
+    }
+
+    .video-thumbnail {
+        flex: none;
+        width: 100%;
+        max-width: 400px;
+        height: 200px;
+    }
+
+    .video-meta {
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .video-action {
+        flex: none;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@keyframes zoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+/* Botão de fechar (X) */
+.close-modal {
+    position: absolute;
+    top: 30px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-modal:hover {
+    color: var(--laranja-principal);
+}
+
+/* Legenda da foto */
+#caption {
+    margin-top: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Cursor de lupa para indicar que é clicável */
+.grid-item img {
+    cursor: zoom-in;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .hero-galeria {
+        justify-content: center;
+        height: auto;
+        padding: 80px 0;
+    }
+    
+    .hero-galeria-wrapper {
+        justify-content: center;
+    }
+
+    .card-galeria-info {
+        border-radius: 30px; /* Arredonda tudo no mobile */
+        margin: 0 20px;
+    }
+
+    .avatar-overlap {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .nav-links {
+        display: none;
+    }
 }
