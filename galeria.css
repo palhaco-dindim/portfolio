@@ -604,6 +604,7 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
+
 /* --- RESPONSIVIDADE DO FOOTER --- */
 @media (max-width: 992px) {
     .footer-grid {
@@ -682,7 +683,74 @@ body {
         transform: translateX(-50%);
     }
 
+  
+}
+
+/* Escondido no desktop */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1200;
+}
+
+.menu-toggle .bar {
+    width: 30px;
+    height: 4px;
+    background-color: var(--laranja-principal);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.mobile-cta-item { display: none; }
+@media (max-width: 992px) {
+    .menu-toggle { display: flex; }
+    .nav-cta { display: none; }
+
     .nav-links {
-        display: none;
+        display: flex; /* Mudado de none para flex */
+        position: fixed;
+        top: 0;
+        right: -100%; /* Escondido */
+        width: 80%;
+        height: 100vh;
+        background-color: var(--branco);
+        transition: 0.4s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+        z-index: 1100;
+        padding-top: 100px;
+        flex-direction: column;
     }
+
+    /* Classe que o JS vai ativar */
+    .nav-links.active {
+        right: 0; 
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        width: 100%;
+    }
+
+    .nav-links a {
+        font-size: 1.3rem;
+        color: black !important;
+        text-align: center;
+    }
+
+    .mobile-cta-item { display: block; }
+
+    /* Animação do X */
+    #mobile-menu.is-active .bar:nth-child(2) { opacity: 0; }
+    #mobile-menu.is-active .bar:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+    #mobile-menu.is-active .bar:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+    /* Ajustes da Hero Galeria no Mobile */
+    .hero-galeria { height: auto; padding: 60px 0; justify-content: center; }
+    .hero-galeria-wrapper { justify-content: center; }
+    .card-galeria-info { border-radius: 30px; margin: 0 15px; padding: 30px; }
+    .avatar-overlap { left: 50%; transform: translateX(-50%); }
 }
