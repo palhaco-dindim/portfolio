@@ -1,0 +1,117 @@
+/* --- RESET E CORES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --vermelho-bg: #E63946;
+    --laranja-gradiente: linear-gradient(135deg, #FF8C38 0%, #FF5100 100%);
+    --card-bg: #FFF0ED; /* Rosa bem clarinho igual da imagem */
+    --fonte-principal: 'Montserrat', sans-serif;
+}
+
+.error-page {
+    font-family: var(--fonte-principal);
+    background-color: var(--vermelho-bg);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* --- O CARD BRANCO --- */
+.error-card {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 850px;
+    padding: 50px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* Imagem Circular */
+.error-image {
+    flex: 0 0 200px;
+}
+
+
+
+.img-circle img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* Conteúdo de Texto */
+.error-content {
+    flex: 1;
+    text-align: center;
+}
+
+.error-content h1 {
+    color: #E63946; /* Texto em vermelho */
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.error-content p {
+    color: #444;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+/* Botão Voltar */
+.error-footer {
+    display: flex;
+    justify-content: flex-end; /* Alinha o botão à direita como na imagem */
+}
+
+.btn-voltar {
+    background: var(--laranja-gradiente);
+    color: white;
+    text-decoration: none;
+    padding: 15px 50px;
+    border-radius: 15px;
+    font-weight: 700;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(255, 81, 0, 0.3);
+}
+
+.btn-voltar:hover {
+    transform: scale(1.05);
+    background: #E63946;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .error-card {
+        flex-direction: column; /* Empilha imagem e texto */
+        padding: 30px;
+        text-align: center;
+    }
+
+    .error-image {
+        flex: none;
+    }
+
+    .error-content h1 {
+        font-size: 1.4rem;
+    }
+
+    .error-footer {
+        justify-content: center; /* Centraliza o botão no celular */
+    }
+
+    .btn-voltar {
+        width: 100%;
+    }
+}
