@@ -1,11 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dindim | Detalhes do Evento</title>
+    <link rel="stylesheet" href="evento-selecionado.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+
+    <!-- NAVBAR (Padrão) -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html"><img src="imgs/logo-dindin-navbar.png" alt="Logo Dindin"></a>
+            </div>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <nav class="nav-links" id="nav-menu">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="index.html#servicos">Serviços</a></li>
+                    <li><a href="galeria.html">Galeria e eventos</a></li>
+                    <li><a href="index.html#faq">Dúvidas frequentes</a></li>
+                    <li class="mobile-cta-item"><a href="https://wa.me/5585988026587" class="btn-whatsapp">Fala comigo</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-cta">
+                <a href="https://wa.me/5585988026587" class="btn-whatsapp">Fala comigo</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO DO EVENTO -->
+    <section class="event-hero1">
+        <div class="event-hero-overlay">
+            <div class="event-hero-content">
+                <div class="event-avatar">
+                    <img src="imgs/logo-dindin-navbar.png" alt="Dindim">
+                </div>
+                <h1>Mostra de conclusão - Reboliço</h1>
+                <p>TJA</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTEÚDO DO EVENTO -->
+    <main class="event-details container">
+        <section class="description-section">
+            <h2 class="description-title">Descrição</h2>
+            <p>
+                Em <span class="highlight">Reboliço</span>,  o Palhaço Dindim assume uma função de extrema responsabilidade (e perigo): a de 
+                <span class="highlight">ajudante de palco</span>.  Enquanto tenta manter a ordem nos bastidores, o 'auxiliar do riso' acaba roubando a cena. Entre uma troca de cenário e outra, suas trapalhadas provam que, no universo da palhaçaria, o imprevisto é o melhor roteiro e o erro é onde mora a palhaçada.
+            </p>
+        </section>
+
+        <!-- GALERIA ESPECÍFICA DO EVENTO -->
+        <section class="event-gallery">
+            <div class="gallery-row-top">
+                <img src="imgs/rebolico-divulgacao.png" alt="Foto 1">
+                <img src="imgs/rebolico2.jpg" alt="Foto 2">
+                <img src="imgs/rebolico3.heic" alt="Foto 3">
+            </div>
+            <div class="gallery-row-bottom">
+                <img src="imgs/rebolico4.heic" alt="Foto Larga">
+            </div>
+            
+            <div class="event-actions">
+                <a href="galeria.html" class="btn-voltar-evento">Voltar</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (Padrão) -->
+    <footer class="main-footer">
+        <a href="#" class="back-to-top">Voltar ao topo</a>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>EXPLORAR</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="index.html#servicos">Serviços</a></li>
+                    <li><a href="galeria.html">Galeria e eventos</a></li>
+                    <li><a href="index.html#faq">Dúvidas frequentes</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>CONTATO</h3>
+                <ul class="footer-links">
+                    <li><a href="https://wa.me/5585988026587">Fala comigo</a></li>
+                    <li><a href="javascript:void(0)" onclick="copyEmail()" id="email-link">Copiar e-mail</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>CONECTE-SE</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Whatsapp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Palhaço Dindim - Todos os direitos reservados &copy; 2024</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Menu Hamburguer
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('is-active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Copiar Email
+        function copyEmail() {
+            const email = "contato@palhacodindim.com"; 
+            navigator.clipboard.writeText(email);
+            const link = document.getElementById('email-link');
+            link.innerText = "E-mail copiado!";
+            setTimeout(() => { link.innerText = "Copiar e-mail"; }, 2000);
+        }
+    </script>
 </body>
 </html>
