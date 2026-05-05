@@ -199,9 +199,10 @@ body {
 }
 /*section2 - apresentação*/
 /* --- SEÇÃO SOBRE --- */
+/* --- SEÇÃO SOBRE (MODIFICADA) --- */
 .about {
     padding: 80px 0;
-    background-color: #FFF5F0; 
+    background-color: #ffffff; 
     overflow: hidden;
 }
 
@@ -210,22 +211,28 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 60px;
-    margin-bottom: 80px; /* Espaço entre as duas partes */
+    margin-bottom: 100px; /* Espaçamento entre as seções */
 }
 
-/* Inverte a ordem na segunda parte */
+/* Lógica de Inversão apenas no Desktop */
 .about-row.reverse {
-    flex-direction: row-reverse;
+    flex-direction: row-reverse; /* Inverte Imagem para esquerda e Texto para direita */
 }
 
 .about-content {
+    flex: 1.2; /* Texto ganha mais espaço */
+}
+
+.about-image {
     flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .about-title {
     color: var(--laranja-principal);
-    font-size: 3rem;
-    margin-bottom: 30px;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
     font-weight: 800;
 }
 
@@ -237,47 +244,31 @@ body {
     text-align: justify;
 }
 
-/* Destaque em Laranja */
-.highlight {
-    color: var(--laranja-principal);
-    font-weight: 700;
-}
+/* --- RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 992px) {
+    /* Forçamos ambas as seções a serem colunas comuns (Texto em cima, Imagem embaixo) */
+    .about-row, .about-row.reverse {
+        flex-direction: column !important; 
+        text-align: center;
+        gap: 40px;
+        margin-bottom: 80px;
+    }
 
-/* --- EFEITO DAS IMAGENS CIRCULARES --- */
-.about-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
+    .about-content {
+        order: 1; /* Garante que o texto seja o primeiro item da coluna */
+    }
 
-.image-circle-wrapper {
-    position: relative;
-    width: 350px;
-    height: 350px;
-    z-index: 2;
-}
+    .about-image {
+        order: 2; /* Garante que a imagem seja o segundo item da coluna */
+    }
 
-/* A borda decorativa vermelha/laranja atrás da foto */
-.image-circle-wrapper::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #E63946; /* Vermelho do detalhe */
-    border-radius: 50%;
-    top: 15px;
-    left: 15px;
-    z-index: -1;
-}
+    .about-content p {
+        text-align: center; /* Centraliza o texto no celular */
+    }
 
-.image-circle-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 8px solid var(--laranja-principal);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    .about-title {
+        font-size: 2rem;
+    }
 }
 
 
@@ -856,24 +847,30 @@ details[open] .faq-content {
 }
 
 /* --- RESPONSIVIDADE SOBRE --- */
+/* --- RESPONSIVIDADE (MOBILE) --- */
 @media (max-width: 992px) {
+    /* Forçamos ambas as seções a serem colunas comuns (Texto em cima, Imagem embaixo) */
     .about-row, .about-row.reverse {
-        flex-direction: column;
+        flex-direction: column !important; 
         text-align: center;
         gap: 40px;
+        margin-bottom: 80px;
+    }
+
+    .about-content {
+        order: 1; /* Garante que o texto seja o primeiro item da coluna */
+    }
+
+    .about-image {
+        order: 2; /* Garante que a imagem seja o segundo item da coluna */
     }
 
     .about-content p {
-        text-align: center;
-    }
-
-    .image-circle-wrapper {
-        width: 280px;
-        height: 280px;
+        text-align: center; /* Centraliza o texto no celular */
     }
 
     .about-title {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 }
 
