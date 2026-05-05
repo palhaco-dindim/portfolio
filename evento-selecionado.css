@@ -138,3 +138,67 @@ body { font-family: var(--fonte-principal); background-color: #fff; color: #333;
     }
 }
 
+/* --- ESTILO DO MODAL (FOTO EXPANDIDA) --- */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 3000; /* Acima da navbar */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Fundo preto transparente */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 80vh;
+    border: 4px solid white;
+    border-radius: 10px;
+    animation: zoom 0.3s ease; /* Efeito de abertura */
+}
+
+@keyframes zoom {
+    from {transform: scale(0.7); opacity: 0;} 
+    to {transform: scale(1); opacity: 1;}
+}
+
+/* Botão de fechar (X) */
+.close-modal {
+    position: absolute;
+    top: 30px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    color: var(--laranja-principal);
+}
+
+/* Legenda da foto */
+#caption {
+    margin-top: 15px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Cursor de lupa para indicar que a foto é clicável */
+.event-gallery img {
+    cursor: zoom-in;
+    transition: filter 0.3s ease;
+}
+
+.event-gallery img:hover {
+    filter: brightness(0.8); /* Escurece levemente no hover */
+}
