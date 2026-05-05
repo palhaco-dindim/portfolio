@@ -940,3 +940,8 @@ details[open] .faq-content {
     
 }
 
+/* Em vez de apenas .highlight, use assim: */
+.about-content .highlight {
+    color: var(--laranja-principal) !important;
+    font-weight: 700;
+}
