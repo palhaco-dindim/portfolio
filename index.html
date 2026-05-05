@@ -11,25 +11,34 @@
 <body>
 
     <header class="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <img src="imgs/logo-dindin-navbar.png" alt="Logo Dindin"> <!-- Substitua pelo caminho da sua imagem -->
-            </div>
-            
-            <nav class="nav-links">
-                <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="galeria.html">Galeria e eventos</a></li>
-                    <li><a href="#faq">Dúvidas frequentes</a></li>
-                </ul>
-            </nav>
-
-            <div class="nav-cta">
-                <a href="https://wa.me/5585988026587" class="btn-whatsapp">Fala comigo</a>
-            </div>
+    <div class="container nav-container">
+        <div class="logo">
+            <img src="imgs/logo-dindin-navbar.png" alt="Logo Dindin">
         </div>
-    </header>
+        
+        <!-- Botão Hamburguer -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav class="nav-links" id="nav-menu">
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="galeria.html">Galeria e eventos</a></li>
+                <li><a href="#faq">Dúvidas frequentes</a></li>
+                <!-- Botão aparece dentro do menu no celular -->
+                <li class="mobile-cta-item"><a href="https://wa.me/5585988026587" class="btn-whatsapp">Fala comigo</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-cta">
+            <a href="https://wa.me/5585988026587" class="btn-whatsapp">Fala comigo</a>
+        </div>
+    </div>
+</header>
 
     <section class="hero">
         <div class="container hero-wrapper">
@@ -160,7 +169,7 @@
             <!-- Card 3 -->
             <div class="service-card">
                 <div class="card-image">
-                    <img src="imgs/servico-esporte.jpg" alt="Energia no Esporte">
+                    <img src="imgs/esporte-servico.jpeg" alt="Energia no Esporte">
                 </div>
                 <div class="card-body">
                     <h3>Energia no Esporte</h3>
@@ -319,6 +328,25 @@
         <p>Palhaço Dindim - Todos os direitos reservados &copy; 2024</p>
     </div>
 </footer>
+<script>
+    const menuToggle = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    // Abre/Fecha o menu ao clicar no hamburguer
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('is-active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Fecha o menu automaticamente ao clicar em qualquer link (âncora)
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('is-active');
+            navMenu.classList.remove('active');
+        });
+    });
+</script>
 
 <!-- Script simples para copiar o e-mail -->
 <script>

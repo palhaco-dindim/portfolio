@@ -694,6 +694,108 @@ details[open] .faq-content {
     color: #ffffff;
 }
 
+/* --- ESTILOS DO MENU HAMBURGUER --- */
+
+/* Escondido no Desktop */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1100;
+}
+
+.menu-toggle .bar {
+    width: 30px;
+    height: 4px;
+    background-color: var(--laranja-principal);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* Item de CTA que só aparece no mobile */
+.mobile-cta-item {
+    display: none;
+}
+
+/* --- CORREÇÃO DA SOBREPOSIÇÃO (SEÇÃO SOBRE) --- */
+.about-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px; /* Reduzi o gap para dar mais espaço ao texto */
+    margin-bottom: 80px;
+    flex-wrap: wrap; /* Permite quebrar linha antes de colidir */
+}
+
+.about-content {
+    flex: 1;
+    min-width: 300px; /* Garante espaço mínimo para o texto respirar */
+}
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+
+@media (max-width: 992px) {
+    /* 1. Mostrar o botão hamburguer */
+    .menu-toggle {
+        display: flex;
+        z-index: 1200; /* Garante que o ícone fique acima de tudo */
+    }
+
+    /* 2. Esconder o botão de WhatsApp original da navbar no celular */
+    .nav-cta {
+        display: none;
+    }
+   
+    /* 3. CONFIGURAÇÃO DO MENU (AQUI ESTÁ O ERRO) */
+    .nav-links {
+        display: flex; /* Mude de 'none' para 'flex' */
+        position: fixed;
+        top: 0; 
+        right: -100%; /* Começa fora da tela */
+        background-color: var(--branco);
+        width: 80%; /* Menu ocupa 80% da largura */
+        height: 100vh; /* Ocupa a altura toda da tela */
+        transition: 0.4s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+        z-index: 1100; /* Fica acima do conteúdo mas abaixo do ícone X */
+        padding-top: 100px; /* Espaço para não cobrir o logo lá no topo */
+    }
+
+    /* 4. QUANDO O MENU ESTÁ ATIVO (CLICADO) */
+    .nav-links.active {
+        right: 0; /* Ele desliza para dentro da tela */
+    }
+
+    /* 5. Alinhamento dos links dentro do menu aberto */
+    .nav-links ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        width: 100%;
+    }
+
+    .nav-links a {
+        font-size: 1.3rem;
+        color: black !important; /* Força a cor preta para ler no fundo branco */
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    
+
+    /* Mostrar o botão de contato dentro do menu */
+    .mobile-cta-item {
+        display: block;
+        margin-top: 10px;
+    }
+
+    /* Animação do Ícone X */
+    #mobile-menu.is-active .bar:nth-child(2) { opacity: 0; }
+    #mobile-menu.is-active .bar:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+    #mobile-menu.is-active .bar:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+}
+
 /* --- RESPONSIVIDADE FOOTER --- */
 @media (max-width: 768px) {
     .footer-grid {
