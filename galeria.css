@@ -604,6 +604,46 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
+/* Removemos o limite do container apenas para o wrapper do hero */
+.hero-galeria-wrapper {
+    display: flex;
+    justify-content: flex-end; /* Empurra tudo para a direita */
+    width: 100%;
+    /* Se o seu .container padrão tiver padding, neutralizamos aqui: */
+    padding-right: 0 !important; 
+    max-width: 100% !important; 
+}
+
+.card-galeria-info {
+    background-color: #FFF0ED;
+    padding: 50px 40px;
+    
+    /* AJUSTE DAS BORDAS: 
+       Arredondamos apenas o lado esquerdo. 
+       O lado direito fica reto (0) para colar na tela. */
+    border-radius: 30px 0 0 30px; 
+    
+    max-width: 500px;
+    position: relative;
+    box-shadow: -10px 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    
+    /* Remove qualquer margem que possa estar afastando da borda */
+    margin-right: 0; 
+}
+
+/* O detalhe lateral também deve estar colado */
+.side-detail {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 15px;
+    background: var(--vermelho-gradiente);
+    /* Garante que não haja borda arredondada aqui */
+    border-radius: 0; 
+}
+
 
 /* --- RESPONSIVIDADE DO FOOTER --- */
 @media (max-width: 992px) {
